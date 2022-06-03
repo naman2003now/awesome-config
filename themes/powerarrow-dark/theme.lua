@@ -337,7 +337,7 @@ function theme.at_screen_connect(s)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt{
-			prompt = 'Execute: '
+			prompt = 'Jo hukum mere aaka: '
 		}
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.

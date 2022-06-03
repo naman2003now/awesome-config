@@ -101,7 +101,7 @@ local themes = {
 local chosen_theme = themes[7]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "xfce4-terminal"
+local terminal     = "kitty"
 local editor       = os.getenv("EDITOR") or "vim"
 local gui_editor   = "gvim"
 local browser      = "firefox"
@@ -116,7 +116,7 @@ local volume_down_key  = "XF86AudioLowerVolume"
 local volume_up_key    = "XF86AudioRaiseVolume"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "1", "2", "3", "4", "5" }
+awful.util.tagnames = { "1", "2", "3", "4", "5","chats", "music" }
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
@@ -448,19 +448,19 @@ globalkeys = my_table.join(
     -- PulseAudio volume control
     awful.key({ modkey, altkey }, "Up",
         function ()
-            os.execute(string.format("pactl set-sink-volume %s +1%%", volume.device))
+            os.execute(string.format("amixer -D pulse sset Master 5%%+", volume.device))
             volume.update()
         end,
         {description = "volume up", group = "hotkeys"}),
     awful.key({ modkey, altkey }, "Down",
         function ()
-            os.execute(string.format("pactl set-sink-volume %s -1%%", volume.device))
+            os.execute(string.format("amixer -D pulse sset Master 5%%-", volume.device))
             volume.update()
         end,
         {description = "volume down", group = "hotkeys"}),
     awful.key({ modkey, altkey }, "m",
         function ()
-            os.execute(string.format("pactl set-sink-mute %s toggle", volume.device))
+            os.execute(string.format("amixer -D pulse sset Master toggle", volume.device))
             volume.update()
         end,
         {description = "volume mute toggle", group = "hotkeys"}),
@@ -514,13 +514,11 @@ globalkeys = my_table.join(
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
     --]]
-    --[[ dmenu
     awful.key({ modkey }, "x", function ()
             os.execute(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
             beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
         end,
-        {description = "show dmenu", group = "launcher"})
-    --]]
+        {description = "show dmenu", group = "launcher"}),
     -- alternatively use rofi, a dmenu-like application with more features
     -- check https://github.com/DaveDavenport/rofi for more details
     -- rofi
