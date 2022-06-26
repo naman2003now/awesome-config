@@ -101,8 +101,8 @@ local themes = {
 local chosen_theme = themes[7]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "kitty"
-local editor       = os.getenv("EDITOR") or "vim"
+local terminal     = "alacritty"
+local editor       = "nvim"
 local gui_editor   = "gvim"
 local browser      = "firefox"
 local guieditor    = "code"
@@ -688,7 +688,7 @@ awful.rules.rules = {
 
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
-      properties = { titlebars_enabled = true } },
+      properties = { titlebars_enabled = false } },
 
     --[[
     -- Set Firefox to always map on the first tag on screen 1.
@@ -776,3 +776,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- possible workaround for tag preservation when switching back to default screen:
 -- https://github.com/lcpz/awesome-copycats/issues/251
 -- }}}
+--
