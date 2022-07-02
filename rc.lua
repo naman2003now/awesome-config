@@ -57,6 +57,7 @@ end
 -- Programs in it are guaranteed
 -- to only have a single instance running.
 awful.spawn.with_shell(". $HOME/.config/awesome/scripts/bash/autorun")
+awful.util.spawn("picom")
 
 -- This function will run once every time Awesome is started
 local function run_once(cmd_arr)

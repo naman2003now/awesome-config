@@ -26,7 +26,7 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 local theme                                     = {}
 theme.machine_name                              = lain_helpers.first_line("/sys/class/dmi/id/product_name")
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-dark"
-theme.wallpaper                                 = theme.dir .. "/wall.jpg"
+theme.wallpaper                                 = theme.dir .. "/wall.png"
 
 -- fonts
 local theme_font_type                       = "Latin Modern Mono Caps"
