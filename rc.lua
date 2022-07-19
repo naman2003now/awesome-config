@@ -103,10 +103,10 @@ local chosen_theme = themes[7]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "kitty"
-local editor       = "nvim"
+local editor       = "emacs"
 local gui_editor   = "gvim"
 local browser      = "firefox"
-local guieditor    = "code"
+local guieditor    = "emacs"
 local scrlocker    = "slock systemctl suspend"
 local mute_key     = "XF86AudioMute"
 local audio_prev   = "XF86AudioPrev"
@@ -589,8 +589,14 @@ clientkeys = my_table.join(
             c.maximized = not c.maximized
             c:raise()
         end ,
-        {description = "maximize", group = "client"})
+        {description = "maximize", group = "client"}),
+-- custom keybindings
+    awful.key({ modkey }, "j", function ()
+            os.execute("emacsclient -c -a 'emacs'")
+        end,
+        {description = "Run Emacs Client", group = "launcher"})
 )
+
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
